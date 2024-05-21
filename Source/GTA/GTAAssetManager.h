@@ -17,5 +17,8 @@ class GTA_API UGTAAssetManager : public UAssetManager
 public:
 	UGTAAssetManager() {};
 
+	static UGTAAssetManager& Get();
+
+	
 	virtual void StartInitialLoading() override;
 };
