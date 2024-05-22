@@ -13,5 +13,18 @@ UCLASS()
 class GTA_API UGTAStoreCarrierItem : public UGTAStoreItem
 {
 	GENERATED_BODY()
+public:
+	UGTAStoreCarrierItem();
+
+public:
+	/// <summary>
+	/// 
+	/// </summary>
+	UPROPERTY(EditAnyWhere, BlueprintReadOnly, Category = "StoreItem | Carrier")
+	float		ItemSpeed;
+
+	UPROPERTY(EditAnyWhere, BlueprintReadOnly, Category = "StoreItem | Carrier")
+	int32		ItemMaxCapacity;
+
 	
 };

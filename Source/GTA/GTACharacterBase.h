@@ -15,10 +15,22 @@ public:
 	// Sets default values for this character's properties
 	AGTACharacterBase();
 
+	virtual void PossessedBy(AController* controller) override;
+	virtual void UnPossessed() override;
+	// pawn possess changed , character info need update
+	virtual void OnRep_Controller() override;
+	// client¡¢sever synchronous data
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& outLifttimeProps) const override;
+
+	// Implement IAbilitySystemInterface
+	UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	/** Delegate handles */
+	FDelegateHandle InventoryUpdateHandle;
+	FDelegateHandle InventoryLoadedHandle;
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

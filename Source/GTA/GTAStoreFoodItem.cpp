@@ -3,3 +3,6 @@
 
 #include "GTAStoreFoodItem.h"
 
+UGTAStoreFoodItem::UGTAStoreFoodItem()
+{
+}

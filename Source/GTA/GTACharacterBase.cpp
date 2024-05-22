@@ -11,6 +11,28 @@ AGTACharacterBase::AGTACharacterBase()
 
 }
 
+void AGTACharacterBase::PossessedBy(AController* controller)
+{
+	Super::PossessedBy(controller);
+
+
+}
+
+void AGTACharacterBase::UnPossessed()
+{
+}
+
+void AGTACharacterBase::OnRep_Controller()
+{
+	Super::OnRep_Controller();
+
+
+}
+
+void AGTACharacterBase::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& outLifttimeProps) const
+{
+}
+
 // Called when the game starts or when spawned
 void AGTACharacterBase::BeginPlay()
 {

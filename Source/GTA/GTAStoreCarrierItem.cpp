@@ -3,3 +3,7 @@
 
 #include "GTAStoreCarrierItem.h"
 
+UGTAStoreCarrierItem::UGTAStoreCarrierItem()
+{
+	
+}

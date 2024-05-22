@@ -13,5 +13,18 @@ UCLASS()
 class GTA_API UGTAStoreWeaponItem : public UGTAStoreItem
 {
 	GENERATED_BODY()
+public:
+
+public:
+
+	UPROPERTY(EditAnyWhere, BlueprintReadOnly, Category = "StoreItem | Weapon")
+	float	     ItemAttackVal;
+
+	UPROPERTY(EditAnyWhere, BlueprintReadOnly, Category = "StoreItem | Weapon")
+	float		 ItemAttackDistance;
+
+	UPROPERTY(EditAnyWhere, BlueprintReadOnly, Category = "StoreItem | Weapon")
+	float		 ItemDefenceVal;
+
 	
 };

@@ -3,3 +3,6 @@
 
 #include "GTAStoreMedicineItem.h"
 
+UGTAStoreMedicineItem::UGTAStoreMedicineItem()
+{
+}
