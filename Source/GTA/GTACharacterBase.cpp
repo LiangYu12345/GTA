@@ -2,6 +2,7 @@
 
 
 #include "GTACharacterBase.h"
+#include "Ability/GTAAbilitySystemComponent.h"
 
 // Sets default values
 AGTACharacterBase::AGTACharacterBase()
@@ -9,6 +10,12 @@ AGTACharacterBase::AGTACharacterBase()
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	m_AbilityInitialized = false;
+
+
+	m_AbilitySystemComponent = CreateDefaultSubobject<UGTAAbilitySystemComponent>(TEXT("Ability System"));
+	m_AbilitySystemComponent->SetIsReplicated(true);
+	m_AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Minimal);
 }
 
 void AGTACharacterBase::PossessedBy(AController* controller)
@@ -29,8 +36,17 @@ void AGTACharacterBase::OnRep_Controller()
 
 }
 
+void AGTACharacterBase::OnRep_PlayerState()
+{
+}
+
 void AGTACharacterBase::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& outLifttimeProps) const
 {
+}
+
+UAbilitySystemComponent* AGTACharacterBase::GetAbilitySystemComponent() const
+{
+	return nullptr;
 }
 
 // Called when the game starts or when spawned

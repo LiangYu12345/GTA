@@ -3,3 +3,10 @@
 
 #include "GTAPlayerControllerBase.h"
 
+AGTAPlayerControllerBase::AGTAPlayerControllerBase()
+{
+}
+
+void AGTAPlayerControllerBase::BeginPlay()
+{
+}

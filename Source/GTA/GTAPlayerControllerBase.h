@@ -13,5 +13,8 @@ UCLASS()
 class GTA_API AGTAPlayerControllerBase : public APlayerController
 {
 	GENERATED_BODY()
-	
+public:
+	AGTAPlayerControllerBase();
+
+	virtual void BeginPlay() override;
 };
