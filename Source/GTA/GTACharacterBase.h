@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "AbilitySystemInterface.h"
 #include <GameplayEffect.h>
+#include "Net/UnrealNetwork.h"
 #include "GTACharacterBase.generated.h"
 
 class UGTAAbilitySystemComponent;

@@ -16,4 +16,6 @@ class GTA_API UGTAGameplayAbility : public UGameplayAbility
 public:
 	UGTAGameplayAbility();
 	
+	//UPROPERTY(BlueprintReadOnly, EditAnyWhere, Category = "Abilities")
+	//EAbilityInputID	AbilityInputID = EAbilityInputID::None;
 };

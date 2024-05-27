@@ -38,6 +38,7 @@ void AGTACharacterBase::OnRep_Controller()
 
 void AGTACharacterBase::OnRep_PlayerState()
 {
+	Super::OnRep_PlayerState();
 }
 
 void AGTACharacterBase::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& outLifttimeProps) const

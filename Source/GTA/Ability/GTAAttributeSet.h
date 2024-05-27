@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "AbilitySystemComponent.h"
 #include "AttributeSet.h"
+#include "Net/UnrealNetwork.h"
 #include "GTAAttributeSet.generated.h"
 
 
@@ -24,7 +25,7 @@ public:
 	UGTAAttributeSet();
 
 	// client¡¢sever synchronous data
-	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifttimeProps) const override;
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
 public:
 	UFUNCTION()
@@ -33,6 +34,12 @@ public:
 	UFUNCTION()
 	virtual void OnRep_Power(const FGameplayAttributeData& val);
 
+	UFUNCTION()
+	virtual void OnRep_Location(const FGameplayAttributeData& val);
+
+	UFUNCTION()
+	virtual void OnRep_Euler(const FGameplayAttributeData& val);
+
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Health, Category = "Attributes")
 	FGameplayAttributeData	m_Health;
 	ATTRIBUTE_ACCESSORS(UGTAAttributeSet, m_Health);
@@ -40,4 +47,12 @@ public:
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Power, Category = "Attributes")
 	FGameplayAttributeData	m_Power;	/// physics stamina
 	ATTRIBUTE_ACCESSORS(UGTAAttributeSet, m_Power);
+
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Location, Category = "Attributes")
+	FGameplayAttributeData	m_Location;
+	ATTRIBUTE_ACCESSORS(UGTAAttributeSet, m_Location);
+
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Location, Category = "Attributes")
+	FGameplayAttributeData	m_Euler;
+	ATTRIBUTE_ACCESSORS(UGTAAttributeSet, m_Euler);
 };

@@ -7,10 +7,12 @@ public class GTA : ModuleRules
 	public GTA(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
-	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore"});
 
-		PrivateDependencyModuleNames.AddRange(new string[] {  });
+        //PrivatePCHHeaderFile = "GTAData.h";
+
+        PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore"});
+
+		PrivateDependencyModuleNames.AddRange(new string[] { "AIModule" });
 
         PublicDependencyModuleNames.AddRange(new string[] { "CesiumRuntime", "GameplayAbilities", "GameplayTags", "GameplayTasks", "SlateCore" });
 
