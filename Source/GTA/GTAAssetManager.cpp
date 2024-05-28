@@ -3,6 +3,7 @@
 
 #include "GTAAssetManager.h"
 #include "AbilitySystemGlobals.h"
+#include <Engine/Engine.h>
 
 UGTAAssetManager& UGTAAssetManager::Get()
 {

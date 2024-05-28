@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Abilities/GameplayAbility.h"
+#include "../GTACommonData.h"
 #include "GTAGameplayAbility.generated.h"
 
 /**
@@ -16,6 +17,6 @@ class GTA_API UGTAGameplayAbility : public UGameplayAbility
 public:
 	UGTAGameplayAbility();
 	
-	//UPROPERTY(BlueprintReadOnly, EditAnyWhere, Category = "Abilities")
-	//EAbilityInputID	AbilityInputID = EAbilityInputID::None;
+	UPROPERTY(BlueprintReadOnly, EditAnyWhere, Category = "Abilities")
+	EGTAAbilityInputID	AbilityInputID = EGTAAbilityInputID::None;
 };

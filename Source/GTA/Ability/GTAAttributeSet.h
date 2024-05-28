@@ -26,10 +26,21 @@ public:
 
 	// client¡¢sever synchronous data
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+	
+	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
 
+	virtual void PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data) override;
+
+	void AdjustAttributeForMaxChange(const FGameplayAttributeData& AffectedAttribute,
+		const FGameplayAttributeData& MaxAttribute,
+		float NewMaxValue,
+		const FGameplayAttribute& AffectedAttributeProperty) const;
 public:
 	UFUNCTION()
 	virtual void OnRep_Health(const FGameplayAttributeData& val);
+
+	UFUNCTION()
+	virtual void OnRep_MaxHealth(const FGameplayAttributeData& val);
 
 	UFUNCTION()
 	virtual void OnRep_Power(const FGameplayAttributeData& val);
@@ -43,6 +54,10 @@ public:
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Health, Category = "Attributes")
 	FGameplayAttributeData	m_Health;
 	ATTRIBUTE_ACCESSORS(UGTAAttributeSet, m_Health);
+
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_MaxHealth, Category = "Attributes")
+	FGameplayAttributeData	m_MaxHealth;
+	ATTRIBUTE_ACCESSORS(UGTAAttributeSet, m_MaxHealth);
 
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Power, Category = "Attributes")
 	FGameplayAttributeData	m_Power;	/// physics stamina

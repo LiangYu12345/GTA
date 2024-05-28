@@ -8,13 +8,15 @@ public class GTA : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
-        //PrivatePCHHeaderFile = "GTAData.h";
+        PrivatePCHHeaderFile = "GTACommonData.h";
 
         PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore"});
 
 		PrivateDependencyModuleNames.AddRange(new string[] { "AIModule" });
 
-        PublicDependencyModuleNames.AddRange(new string[] { "CesiumRuntime", "GameplayAbilities", "GameplayTags", "GameplayTasks", "SlateCore" });
+        PublicDependencyModuleNames.AddRange(new string[] { "CesiumRuntime", "SlateCore" });
+
+        PublicDependencyModuleNames.AddRange(new string[] { "GameplayAbilities", "GameplayTags", "GameplayTasks" });
 
         // Uncomment if you are using Slate UI
         // PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
