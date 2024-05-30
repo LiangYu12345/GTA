@@ -14,4 +14,6 @@ class GTA_API UGTASaveGame : public USaveGame
 {
 	GENERATED_BODY()
 	
+public:
+
 };

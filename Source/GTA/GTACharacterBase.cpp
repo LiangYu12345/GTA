@@ -144,3 +144,7 @@ void AGTACharacterBase::Tick(float DeltaTime)
 
 }
 
+void AGTACharacterBase::PlayPunchAnimation_Implementation(const float TimerValue)
+{
+	FVector NewLocation(GetActorLocation());
+}

@@ -74,6 +74,8 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UFUNCTION(NetMulticast, Reliable, Category = "Animation")
+	void PlayPunchAnimation(const float TimerValue);
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AbilitySystemComponent")
 	TObjectPtr<UGTAAbilitySystemComponent> m_AbilitySystemComponent;
