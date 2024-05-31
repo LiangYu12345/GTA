@@ -18,6 +18,8 @@ public class GTA : ModuleRules
 
         PublicDependencyModuleNames.AddRange(new string[] { "GameplayAbilities", "GameplayTags", "GameplayTasks" });
 
+        PublicDependencyModuleNames.AddRange(new string[] { "MassAIBehavior" });
+
         // Uncomment if you are using Slate UI
         // PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
 

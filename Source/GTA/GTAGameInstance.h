@@ -37,7 +37,7 @@ public:
 	UGTASaveGame* LoadGTASaveGame(bool* const bOutSaveGameFound = nullptr);
 
 	UPROPERTY(BlueprintAssignable)
-	FGTAOnSaveGameLoad OnSaveGameLoaded;
+	FGTAOnSaveGameLoad m_OnSaveGameLoaded;
 
 	UFUNCTION(BlueprintPure, Category = "SaveGame")
 	bool IsSaveGameLoaded() const { return m_bSaveGameLoaded; }

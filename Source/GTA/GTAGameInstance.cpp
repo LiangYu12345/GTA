@@ -35,13 +35,22 @@ UGTASaveGame* UGTAGameInstance::LoadGTASaveGame(bool* const bOutSaveGameFound)
 		if (bOutSaveGameFound != nullptr) {
 			*bOutSaveGameFound = true;
 		}
+
+		m_OnSaveGameLoaded.Broadcast(m_SaveGame);
 	}
 	else {
 		if (bOutSaveGameFound != nullptr) {
 			*bOutSaveGameFound = false;
 		}
+		UE_LOG(GTAGame, Warning, TEXT("%s: failed to load save data. Most likely no save data exists yet."), ANSI_TO_TCHAR(__func__));
+
+		m_SaveGame = Cast<UGTASaveGame>(UGameplayStatics::CreateSaveGameObject(UGTASaveGame::StaticClass()));
+
+		if (m_SaveGame == nullptr) {
+			UE_LOG(GTAGame, Warning, TEXT("%s: failed to create a new save game."), ANSI_TO_TCHAR(__func__));
+		}
 	}
-	return nullptr;
+	return m_SaveGame;
 }
 
 void UGTAGameInstance::SaveGTAGameData(bool Async)
