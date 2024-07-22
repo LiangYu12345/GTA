@@ -9,6 +9,7 @@
 #include "Camera/PhotoModeComponent.h"
 #include "MassCommonTypes.h"
 #include "MassActorSubsystem.h"
+#include "Camera/GTAPlayerCameraManager.h"
 #include "GTAPlayerControllerBase.generated.h"
 
 /**
@@ -62,11 +63,56 @@ protected:
 
 	UFUNCTION(BlueprintPure, Category = "Camera")
 	UPhotoModeComponent* GetPhoteModeComponent() const { return m_PhotoModeComponent; }
-	
+
 	UFUNCTION(BlueprintPure, Category = "Vehicle")
 	AActor* GetCurrentPlayerVehicle() const { return m_CurrentPlayerVehicle; }
 
 	const FMassEntityHandle& GetCurrenPlayerVehicleMassHandle() { return m_CurrentPlayerVehicleMassHandle; }
+
+	UFUNCTION(BlueprintCallable)
+	AGTAPlayerCameraManager* GetGTACameraManager() const;
+
+	UFUNCTION(BlueprintCallable, Category = "Vehicle")
+	void SetCurrentPlayerVehicle(AActor* NewPlayerVehicle);
+
+	UClass* GetDronePawnClass() const { return m_DronePawnClass.Get(); }
+
+	UFUNCTION(BlueprintCallable)
+	float GetCameraTransitionLevelStreamDistance2D() const { return m_CameraTransitionLevelStreamDistance2D; }
+
+	UFUNCTION(BlueprintCallable)
+	void SetCanPerformInteractions(bool bNewCanPerformInteractions) { m_bCanPerformInteractions = bNewCanPerformInteractions; }
+
+	UFUNCTION(BlueprintCallable)
+	bool GetCanPerformInteractions() const { return m_bCanPerformInteractions; }
+
+	UFUNCTION(BlueprintCallable, Category = "Input")
+	void AddInputContext(const bool bForce = false);
+
+	UFUNCTION(BlueprintCallable, Category = "Input")
+	void RemoveInputContext();
+
+	UFUNCTION(BlueprintCallable, Category = "Input")
+	void AddPawnInputContext(APawn* pawn);
+
+	UFUNCTION(BlueprintCallable, Category = "Input")
+	void RemoveInputContext(APawn* pawn);
+
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Drone")
+	TSubclassOf<APawn> m_DronePawnClass;
+
+	UPROPERTY(Config)
+	float m_CameraTransitionLevelStreamDistance2D = 20000.0f;
+
+	UPROPERTY(Config)
+	float m_CameraTrasitionWPQueryDistance = 10000.0f;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Input")
+	UInputMappingContext* InputMappingContext;
+
+	UPROPERTY(VisibleAnyWhere, Category = "Interaction")
+	bool m_bCanPerformInteractions = true;
 private:
 	UPROPERTY(VisibleAnyWhere, Category = "GTA UI")
 	UGTAUIComponent* m_GTAUIComponent;

@@ -2,6 +2,7 @@
 
 
 #include "GTAPlayerControllerBase.h"
+#include <EnhancedInputSubsystems.h>
 
 AGTAPlayerControllerBase::AGTAPlayerControllerBase()
 {
@@ -51,3 +52,40 @@ void AGTAPlayerControllerBase::AttachToPawn(APawn* InPawn)
 //{
 //	return false;
 //}
+
+AGTAPlayerCameraManager* AGTAPlayerControllerBase::GetGTACameraManager() const
+{
+	return Cast<AGTAPlayerCameraManager>(PlayerCameraManager);
+}
+
+void AGTAPlayerControllerBase::SetCurrentPlayerVehicle(AActor* NewPlayerVehicle)
+{
+}
+
+void AGTAPlayerControllerBase::AddInputContext(const bool bForce)
+{
+	if (ULocalPlayer* localPlayer = GetLocalPlayer()) {
+		if (UEnhancedInputLocalPlayerSubsystem* InputSubsystem = localPlayer->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>()) {
+			InputSubsystem->AddMappingContext(InputMappingContext, InputPriority);
+		}
+	}
+}
+
+void AGTAPlayerControllerBase::RemoveInputContext()
+{
+	if (ULocalPlayer* localPlayer = GetLocalPlayer()) {
+		if (UEnhancedInputLocalPlayerSubsystem* InputSubsystem = localPlayer->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>()) {
+			InputSubsystem->RemoveMappingContext(InputMappingContext);
+		}
+	}
+}
+
+void AGTAPlayerControllerBase::AddPawnInputContext(APawn* pawn)
+{
+}
+
+void AGTAPlayerControllerBase::RemoveInputContext(APawn* pawn)
+{
+}
+
+

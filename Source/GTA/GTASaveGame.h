@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/SaveGame.h"
+#include "Item/GTAItem.h"
 #include "GTASaveGame.generated.h"
 
 /**
@@ -15,5 +16,11 @@ class GTA_API UGTASaveGame : public USaveGame
 	GENERATED_BODY()
 	
 public:
+	UGTASaveGame();
 
+	UPROPERTY(VisibleAnyWhere, BlueprintReadWrite, Category = "SaveGame")
+	TMap<FPrimaryAssetId, UGTAItem> m_InventoryData;
+
+	UPROPERTY(VisibleAnyWhere, BlueprintReadWrite, Category = "SaveGame")
+	TMap<>
 };
